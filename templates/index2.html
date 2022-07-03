@@ -1,0 +1,36 @@
+<body>
+    <input type="checkbox" />
+    <div class="result"></div>
+    <script>
+      document
+        .querySelector("input")
+        .addEventListener("click", e => {
+          fetch("http://127.0.0.1:5000/", {
+              method: "POST",
+              headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                c_check: Number(e.target.checked)
+              })
+            })
+            .then(res => {
+              if (!res.ok) {
+                throw Error(res.status);
+              }
+  
+              return res.json();
+            })
+            .then(({data: {val}}) => {
+              console.log(val);
+              const res = document.querySelector(".result");
+              res.innerText = `client got: ${val}`;
+            })
+            .catch(err => console.error(err))
+          ;
+        })
+      ;
+    </script>
+  </body>
+  

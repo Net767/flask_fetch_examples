@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="{{url_for('static', filename='myscripts.js')}}"></script>
+    <title>Home page</title>
+</head>
+
+<body>
+    <h1>{{content}}</h1>
+    <form >
+        <div class="textbox">
+            <label ><input type="checkbox"></label>
+            <input type="text" name="content" placeholder="Enter your content here" onkeypress="handleKeyPress(event)">
+            <input type="submit" value="Click me">
+        </div>
+    </form>
+</body>
+
+</html>
